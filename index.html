@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecureFiles - Modern File Management System</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="app.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div id="app">
+        <!-- Auth Page (Landing page) -->
+        <div id="auth-page" class="page">
+            <div class="auth-container">
+                <div class="auth-form-container">
+                    <div class="logo-container">
+                        <div class="logo-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <h1>SecureFiles</h1>
+                    </div>
+                    <div class="auth-card">
+                        <div class="auth-tabs">
+                            <button class="auth-tab active" data-tab="login">Login</button>
+                            <button class="auth-tab" data-tab="register">Register</button>
+                        </div>
+                        
+                        <div class="auth-form-content">
+                            <!-- Login Form -->
+                            <form id="login-form" class="auth-form active">
+                                <div class="form-group">
+                                    <label for="login-username">Username</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" id="login-username" placeholder="your.username" required>
+                                    </div>
+                                    <p class="error-message" id="login-username-error"></p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="label-with-link">
+                                        <label for="login-password">Password</label>
+                                        <a href="#" class="forgot-password">Forgot password?</a>
+                                    </div>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" id="login-password" placeholder="••••••••" required>
+                                    </div>
+                                    <p class="error-message" id="login-password-error"></p>
+                                </div>
+                                
+                                <div class="remember-me">
+                                    <input type="checkbox" id="remember-me">
+                                    <label for="remember-me">Remember me</label>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                                
+                                <div class="divider">
+                                    <span>Or continue with</span>
+                                </div>
+                                
+                                <div class="social-login">
+                                    <button type="button" class="btn btn-outline">
+                                        <i class="fab fa-google"></i>
+                                        Google
+                                    </button>
+                                    <button type="button" class="btn btn-outline">
+                                        <i class="fab fa-microsoft"></i>
+                                        Microsoft
+                                    </button>
+                                </div>
+                            </form>
+                            
+                            <!-- Register Form -->
+                            <form id="register-form" class="auth-form">
+                                <div class="form-group">
+                                    <label for="register-username">Username</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-user"></i>
+                                        <input type="text" id="register-username" placeholder="your.username" required>
+                                    </div>
+                                    <p class="error-message" id="register-username-error"></p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="register-password">Password</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" id="register-password" placeholder="••••••••" required>
+                                    </div>
+                                    <p class="error-message" id="register-password-error"></p>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="register-confirm-password">Confirm Password</label>
+                                    <div class="input-with-icon">
+                                        <i class="fas fa-lock"></i>
+                                        <input type="password" id="register-confirm-password" placeholder="••••••••" required>
+                                    </div>
+                                    <p class="error-message" id="register-confirm-password-error"></p>
+                                </div>
+                                
+                                <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+                                
+                                <p class="terms-text">
+                                    By creating an account, you agree to our <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="auth-hero">
+                    <div class="hero-content">
+                        <h1>Secure File Management for Everyone</h1>
+                        <p>Store, share, and manage your files with industry-leading security and easy-to-use features.</p>
+                        
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h3>End-to-End Encryption</h3>
+                                    <p>Your files are encrypted before they leave your device.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h3>Secure Sharing</h3>
+                                    <p>Share files with confidence using granular permissions.</p>
+                                </div>
+                            </div>
+                            
+                            <div class="feature-item">
+                                <div class="feature-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="feature-text">
+                                    <h3>Collaboration</h3>
+                                    <p>Work together on files with team members in real-time.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <button class="btn btn-outline-light">
+                            Learn more about our security
+                            <i class="fas fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Dashboard Page -->
+        <div id="dashboard-page" class="page hidden">
+            <header class="main-header">
+                <div class="header-left">
+                    <button id="mobile-menu-toggle" class="btn-icon">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="logo">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>SecureFiles</span>
+                    </div>
+                </div>
+                
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="search" placeholder="Search files and folders...">
+                </div>
+                
+                <div class="header-actions">
+                    <button id="upload-btn" class="btn btn-primary">
+                        <i class="fas fa-upload"></i>
+                        <span>Upload</span>
+                    </button>
+                    <button id="theme-toggle" class="btn-icon">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="btn-icon btn-notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge"></span>
+                    </button>
+                    <div class="user-menu">
+                        <button class="user-menu-btn">
+                            <div class="avatar">
+                                <span>J</span>
+                            </div>
+                            <span class="username">JohnDoe</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu hidden">
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-user"></i>
+                                Profile
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-cog"></i>
+                                Settings
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item text-danger" id="logout-btn">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Sign out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="app-container">
+                <aside class="sidebar" id="sidebar">
+                    <nav class="sidebar-nav">
+                        <div class="nav-section">
+                            <h3 class="nav-title">Main</h3>
+                            <ul class="nav-list">
+                                <li class="nav-item active">
+                                    <a href="#" data-page="dashboard">
+                                        <i class="fas fa-th-large"></i>
+                                        <span>Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#" data-page="files">
+                                        <i class="fas fa-folder"></i>
+                                        <span>All Files</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Recent</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">
+                                        <i class="fas fa-star"></i>
+                                        <span>Favorites</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">
+                                        <i class="fas fa-trash"></i>
+                                        <span>Trash</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="nav-section">
+                            <h3 class="nav-title">Categories</h3>
+                            <ul class="nav-list">
+                                <li class="nav-item">
+                                    <a href="#">
+                                        <i class="fas fa-image text-blue"></i>
+                                        <span>Images</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">
+                                        <i class="fas fa-file-alt text-green"></i>
+                                        <span>Documents</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">
+                                        <i class="fas fa-video text-purple"></i>
+                                        <span>Videos</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">
+                                        <i class="fas fa-music text-red"></i>
+                                        <span>Audio</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="nav-section">
+                            <h3 class="nav-title">Storage</h3>
+                            <div class="storage-info">
+                                <div class="storage-text">
+                                    <span class="storage-used">2.5 GB used</span>
+                                    <span class="storage-total">10 GB total</span>
+                                </div>
+                                <div class="storage-progress-bar">
+                                    <div class="storage-progress" style="width: 25%"></div>
+                                </div>
+                                <a href="#" class="storage-upgrade">Upgrade storage</a>
+                            </div>
+                        </div>
+                    </nav>
+                    
+                    <div class="security-promo">
+                        <div class="security-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="security-content">
+                            <h4>Security Features</h4>
+                            <p>Enable 2FA and end-to-end encryption for maximum security.</p>
+                            <a href="#">Enable now</a>
+                        </div>
+                    </div>
+                </aside>
+                
+                <main class="main-content">
+                    <div class="dashboard-container">
+                        <div class="welcome-section">
+                            <div>
+                                <h1>Welcome back, <span id="user-name">John</span>!</h1>
+                                <p>Here's an overview of your storage</p>
+                            </div>
+                            <div class="upload-area" id="upload-area">
+                                <div class="upload-icon">
+                                    <i class="fas fa-cloud-upload-alt"></i>
+                                </div>
+                                <span class="upload-text">Upload files</span>
+                                <span class="upload-hint">or drag and drop</span>
+                            </div>
+                        </div>
+                        
+                        <div class="stats-cards">
+                            <div class="stat-card">
+                                <div class="stat-icon bg-blue">
+                                    <i class="fas fa-folder"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-title">Files</span>
+                                    <span class="stat-value">24</span>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon bg-green">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-title">Shared</span>
+                                    <span class="stat-value">7</span>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon bg-purple">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-title">Recent</span>
+                                    <span class="stat-value">12</span>
+                                </div>
+                            </div>
+                            
+                            <div class="stat-card">
+                                <div class="stat-icon bg-red">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="stat-info">
+                                    <span class="stat-title">Encrypted</span>
+                                    <span class="stat-value">5</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="security-alert" id="security-alert">
+                            <div class="alert-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="alert-content">
+                                <h3>Security alert</h3>
+                                <p>We've detected unusual login activity from a new device. Please verify if this was you.</p>
+                                <div class="alert-actions">
+                                    <button class="btn btn-secondary">Yes, it was me</button>
+                                    <button class="btn btn-danger">Secure my account</button>
+                                </div>
+                            </div>
+                            <button class="btn-close" id="close-alert">
+                                <i class="fas fa-times"></i>
+                            </button>
+                        </div>
+                        
+                        <div class="recent-files-section">
+                            <div class="section-header">
+                                <h2>Recent Files</h2>
+                                <a href="#" class="view-all">View all</a>
+                            </div>
+                            
+                            <div class="files-table">
+                                <div class="files-header">
+                                    <div class="file-cell">Name</div>
+                                    <div class="file-cell">Modified</div>
+                                    <div class="file-cell">Size</div>
+                                    <div class="file-cell">Actions</div>
+                                </div>
+                                <div class="files-body" id="recent-files-list">
+                                    <!-- Files will be added here dynamically -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+        
+        <!-- Files Page -->
+        <div id="files-page" class="page hidden">
+            <header class="main-header">
+                <!-- Same header as dashboard -->
+                <div class="header-left">
+                    <button id="files-mobile-menu-toggle" class="btn-icon">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <div class="logo">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>SecureFiles</span>
+                    </div>
+                </div>
+                
+                <div class="search-bar">
+                    <i class="fas fa-search"></i>
+                    <input type="search" id="files-search" placeholder="Search files and folders...">
+                </div>
+                
+                <div class="header-actions">
+                    <button id="files-upload-btn" class="btn btn-primary">
+                        <i class="fas fa-upload"></i>
+                        <span>Upload</span>
+                    </button>
+                    <button id="files-theme-toggle" class="btn-icon">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                    <button class="btn-icon btn-notifications">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge"></span>
+                    </button>
+                    <div class="user-menu">
+                        <button class="user-menu-btn">
+                            <div class="avatar">
+                                <span>J</span>
+                            </div>
+                            <span class="username">JohnDoe</span>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-menu hidden">
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-user"></i>
+                                Profile
+                            </a>
+                            <a href="#" class="dropdown-item">
+                                <i class="fas fa-cog"></i>
+                                Settings
+                            </a>
+                            <div class="dropdown-divider"></div>
+                            <a href="#" class="dropdown-item text-danger" id="files-logout-btn">
+                                <i class="fas fa-sign-out-alt"></i>
+                                Sign out
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            
+            <div class="app-container">
+                <aside class="sidebar" id="files-sidebar">
+                    <!-- Same sidebar as dashboard -->
+                    <nav class="sidebar-nav">
+                        <div class="nav-section">
+                            <h3 class="nav-title">Main</h3>
+                            <ul class="nav-list">
+                                <li class="nav-item">
+                                    <a href="#" data-page="dashboard">
+                                        <i class="fas fa-th-large"></i>
+                                        <span>Dashboard</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item active">
+                                    <a href="#" data-page="files">
+                                        <i class="fas fa-folder"></i>
+                                        <span>All Files</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">
+                                        <i class="fas fa-clock"></i>
+                                        <span>Recent</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">
+                                        <i class="fas fa-star"></i>
+                                        <span>Favorites</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">
+                                        <i class="fas fa-trash"></i>
+                                        <span>Trash</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="nav-section">
+                            <h3 class="nav-title">Categories</h3>
+                            <ul class="nav-list">
+                                <li class="nav-item">
+                                    <a href="#">
+                                        <i class="fas fa-image text-blue"></i>
+                                        <span>Images</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">
+                                        <i class="fas fa-file-alt text-green"></i>
+                                        <span>Documents</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">
+                                        <i class="fas fa-video text-purple"></i>
+                                        <span>Videos</span>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="#">
+                                        <i class="fas fa-music text-red"></i>
+                                        <span>Audio</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="nav-section">
+                            <h3 class="nav-title">Storage</h3>
+                            <div class="storage-info">
+                                <div class="storage-text">
+                                    <span class="storage-used">2.5 GB used</span>
+                                    <span class="storage-total">10 GB total</span>
+                                </div>
+                                <div class="storage-progress-bar">
+                                    <div class="storage-progress" style="width: 25%"></div>
+                                </div>
+                                <a href="#" class="storage-upgrade">Upgrade storage</a>
+                            </div>
+                        </div>
+                    </nav>
+                    
+                    <div class="security-promo">
+                        <div class="security-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="security-content">
+                            <h4>Security Features</h4>
+                            <p>Enable 2FA and end-to-end encryption for maximum security.</p>
+                            <a href="#">Enable now</a>
+                        </div>
+                    </div>
+                </aside>
+                
+                <main class="main-content">
+                    <div class="files-container">
+                        <div class="files-header-actions">
+                            <div class="files-title">
+                                <i class="fas fa-folder text-primary"></i>
+                                <h1>All Files</h1>
+                            </div>
+                            
+                            <button class="btn btn-primary">
+                                <i class="fas fa-plus"></i>
+                                <span>New Folder</span>
+                            </button>
+                        </div>
+                        
+                        <div class="files-filters">
+                            <div class="search-container">
+                                <i class="fas fa-search"></i>
+                                <input type="search" id="files-search-filter" placeholder="Search files and folders...">
+                            </div>
+                            
+                            <div class="filters-group">
+                                <select id="file-type-filter" class="filter-select">
+                                    <option value="">All files</option>
+                                    <option value="documents">Documents</option>
+                                    <option value="images">Images</option>
+                                    <option value="encrypted">Encrypted</option>
+                                    <option value="shared">Shared</option>
+                                </select>
+                                
+                                <select id="sort-order" class="filter-select">
+                                    <option value="newest">Newest</option>
+                                    <option value="oldest">Oldest</option>
+                                    <option value="name-asc">Name (A-Z)</option>
+                                    <option value="name-desc">Name (Z-A)</option>
+                                    <option value="size-asc">Size (Small-Large)</option>
+                                    <option value="size-desc">Size (Large-Small)</option>
+                                </select>
+                                
+                                <div class="view-toggle">
+                                    <button class="view-toggle-btn active" id="grid-view-btn">
+                                        <i class="fas fa-th-large"></i>
+                                    </button>
+                                    <button class="view-toggle-btn" id="list-view-btn">
+                                        <i class="fas fa-list"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="files-display">
+                            <div id="files-grid" class="files-grid">
+                                <!-- Files will be added here dynamically -->
+                            </div>
+                            
+                            <div id="files-list" class="files-list hidden">
+                                <div class="list-header">
+                                    <div class="list-cell">Name</div>
+                                    <div class="list-cell">Modified</div>
+                                    <div class="list-cell">Size</div>
+                                    <div class="list-cell">Actions</div>
+                                </div>
+                                <div id="files-list-body">
+                                    <!-- Files will be added here dynamically -->
+                                </div>
+                            </div>
+                            
+                            <div id="empty-files" class="empty-files hidden">
+                                <div class="empty-icon">
+                                    <i class="fas fa-folder-open"></i>
+                                </div>
+                                <h3>No files found</h3>
+                                <p id="empty-files-message">Upload your first file to get started</p>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modals -->
+    <div id="upload-modal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Upload Files</h2>
+                <button class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="upload-dropzone" id="upload-dropzone">
+                    <input type="file" id="file-input" multiple class="hidden">
+                    <div class="upload-content">
+                        <div class="upload-icon">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                        </div>
+                        <h3>Upload files</h3>
+                        <p>Drag and drop files here or click to browse</p>
+                    </div>
+                </div>
+                
+                <div id="selected-files" class="selected-files hidden">
+                    <div class="selected-files-header">
+                        <h3>Selected Files (<span id="file-count">0</span>)</h3>
+                        <div class="encrypt-toggle">
+                            <input type="checkbox" id="encrypt-files">
+                            <label for="encrypt-files">Encrypt files</label>
+                        </div>
+                    </div>
+                    
+                    <div id="file-list" class="file-list">
+                        <!-- Selected files will be added here dynamically -->
+                    </div>
+                    
+                    <button id="upload-files-btn" class="btn btn-primary btn-block">Upload Files</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="file-preview-modal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-container large">
+            <div class="modal-header">
+                <h2 id="preview-file-name">Filename.jpg</h2>
+                <div class="modal-actions">
+                    <button class="btn-icon" id="download-file-btn">
+                        <i class="fas fa-download"></i>
+                    </button>
+                    <button class="btn-icon" id="share-file-btn">
+                        <i class="fas fa-share-alt"></i>
+                    </button>
+                    <button class="modal-close">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="modal-body">
+                <div id="file-preview-content" class="file-preview-content">
+                    <!-- File preview will be added here dynamically -->
+                </div>
+                
+                <div class="file-details">
+                    <div class="file-detail">
+                        <p class="detail-label">Type</p>
+                        <p id="file-type" class="detail-value">Image</p>
+                    </div>
+                    <div class="file-detail">
+                        <p class="detail-label">Size</p>
+                        <p id="file-size" class="detail-value">2.5 MB</p>
+                    </div>
+                    <div class="file-detail">
+                        <p class="detail-label">Created</p>
+                        <p id="file-created" class="detail-value">Mar 15, 2023</p>
+                    </div>
+                    <div class="file-detail">
+                        <p class="detail-label">Last Modified</p>
+                        <p id="file-modified" class="detail-value">Mar 17, 2023</p>
+                    </div>
+                </div>
+                
+                <div id="file-encrypted-badge" class="encrypted-badge hidden">
+                    <i class="fas fa-lock"></i>
+                    <span>Encrypted</span>
+                    <span class="encrypted-note">This file is protected with encryption</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div id="share-modal" class="modal hidden">
+        <div class="modal-overlay"></div>
+        <div class="modal-container">
+            <div class="modal-header">
+                <h2>Share "<span id="share-file-name">Filename.jpg</span>"</h2>
+                <button class="modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="share-section">
+                    <h3>People with access</h3>
+                    <div class="share-users">
+                        <div class="share-user">
+                            <div class="user-avatar owner">
+                                <span>YOU</span>
+                            </div>
+                            <div class="user-details">
+                                <p class="user-name">You (Owner)</p>
+                                <p class="user-email">your.email@example.com</p>
+                            </div>
+                            <span class="user-access">Full access</span>
+                        </div>
+                        <!-- Other shared users will be added here dynamically -->
+                    </div>
+                </div>
+                
+                <div class="share-section">
+                    <h3>Add people</h3>
+                    <div class="add-people">
+                        <input type="email" id="share-email" placeholder="Email address">
+                        <select id="share-permission">
+                            <option value="view">Can view</option>
+                            <option value="edit">Can edit</option>
+                            <option value="full">Full access</option>
+                        </select>
+                    </div>
+                    <button id="share-btn" class="btn btn-primary btn-sm">Share</button>
+                </div>
+                
+                <div class="share-section">
+                    <h3>General access</h3>
+                    <div class="access-setting">
+                        <div class="access-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <div class="access-details">
+                            <p id="access-type">Restricted</p>
+                            <p id="access-description">Only people with access can open</p>
+                        </div>
+                        <select id="access-level">
+                            <option value="restricted">Restricted</option>
+                            <option value="link">Anyone with link</option>
+                            <option value="public">Public</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="encryption-section" class="share-section hidden">
+                    <h3>Encryption</h3>
+                    <div class="encryption-info">
+                        <div class="encryption-icon">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="encryption-details">
+                            <p>End-to-end encrypted</p>
+                            <p>Only recipients can decrypt this file</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="share-link-section" class="share-section hidden">
+                    <h3>Share link</h3>
+                    <div class="share-link">
+                        <input type="text" id="share-link-input" value="https://securefiles.com/s/123456" readonly>
+                        <button id="copy-link-btn" class="btn-icon">
+                            <i class="fas fa-copy"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline modal-cancel">Cancel</button>
+                <button class="btn btn-primary modal-done">Done</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
